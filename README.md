@@ -34,9 +34,9 @@ python -m http.server 8080
 
 1. 打开 https://supabase.com 注册并 **New project**，Region 选离你近的（如 `East US`），数据库密码随便设一个记下来。
 2. 左侧 **SQL Editor** → **New query**，把 `supabase/schema.sql` 全部粘进去 → **Run**。
-3. 左侧 **Project Settings → API**（新版界面叫 **API Keys**），复制：
+3. 点项目页面顶部的 **Connect** 按钮（或左侧 **Settings → API Keys**），复制：
    - **Project URL**（形如 `https://xxxx.supabase.co`）
-   - **anon public** key（新版叫 **Publishable key**，`sb_publishable_...`）
+   - **Publishable key**（`sb_publishable_...`）；旧版的 **anon** key（在 Legacy API keys 里）也可以
 4. 填进 `js/config.js`：
    ```js
    window.NOVELNOTES_CONFIG = {
