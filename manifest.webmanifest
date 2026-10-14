@@ -1,0 +1,12 @@
+{
+  "name": "读后记 NovelNotes",
+  "short_name": "读后记",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F4EEE1",
+  "theme_color": "#F4EEE1",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

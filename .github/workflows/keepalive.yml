@@ -1,0 +1,23 @@
+# Pings Supabase on a schedule so the free-tier project is not paused after a week of inactivity
+# Add these in the GitHub repo under Settings → Secrets and variables → Actions:
+#   SUPABASE_URL       e.g. https://abcdefgh.supabase.co
+#   SUPABASE_ANON_KEY  the same anon / publishable key as in js/config.js
+name: Supabase keep-alive
+
+on:
+  schedule:
+    - cron: '17 13 */2 * *'   # every two days (UTC)
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping database
+        env:
+          URL: ${{ secrets.SUPABASE_URL }}
+          KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" "$URL/rest/v1/notes?select=id&limit=1" -H "apikey: $KEY")
+          echo "HTTP $code"
+          test "$code" = "200"
